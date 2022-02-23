@@ -4,6 +4,8 @@ package io.inpublic.twitter.v1;
 
 option go_package = "github.com/inpublic-io/protocol;protocol";
 
+import "google/protobuf/empty.proto";
+
 // A represention of an organization
 message User {
   // The user unique identification
@@ -19,19 +21,6 @@ message User {
   int32 followers_count = 4;
 }
 
-message ParametersMap {
-  string key = 1;
-  repeated string values = 2;
-}
-
-message LookupByIDRequest {
-  // The user unique ID to lookup for
-  string id = 1;
-
-  // The query parameters of the lookup
-  repeated ParametersMap parameters = 9;
-}
-
 service Users {
-  rpc LookupByID(LookupByIDRequest) returns (User);
+  rpc LookupInpublic(google.protobuf.Empty) returns (User);
 }
