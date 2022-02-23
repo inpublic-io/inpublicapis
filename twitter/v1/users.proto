@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package io.inpublic.twitter.v1;
+
+option go_package = "github.com/inpublic-io/protocol;protocol";
+
+// A represention of an organization
+message User {
+  // The user unique identification
+  string id = 1;
+
+  // The user display name
+  string name = 2;
+
+  // The user Twitter unique name
+  string username = 3;
+
+  // The user followers count
+  int32 followers_count = 4;
+}
+
+message ParametersMap {
+  string key = 1;
+  repeated string values = 2;
+}
+
+message LookupByIDRequest {
+  // The user unique ID to lookup for
+  string id = 1;
+
+  // The query parameters of the lookup
+  repeated ParametersMap parameters = 9;
+}
+
+service Users {
+  rpc LookupByID(LookupByIDRequest) returns (User);
+}
