@@ -1,0 +1,13 @@
+{
+  "name": "@inpublic-io/twitter-protocol",
+  "version": "0.0.3",
+  "description": "inpublic twitter gRPC protocol for typescript",
+  "repository": "https://github.com/inpublic-io/inpublicapis",
+  "author": "Vinicius Niche <viniciusnichecorrea@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "google-protobuf": "^3.19.4"
+  }
+}

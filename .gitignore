@@ -1,1 +1,5 @@
 **/*.go
+**/*.js
+**/*.ts
+yarn-error.log
+node_modules/
