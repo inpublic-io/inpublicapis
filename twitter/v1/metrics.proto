@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package io.inpublic.twitter.v1;
+
+option go_package = "github.com/inpublic-io/protocol;protocol";
+
+// A represention of an contribution metric
+message ContributionMetric {
+  // The metric slice of timestamps and counts aggregated by the interval window
+  map<string, int32> values = 1;
+}
+
+// A representation of an query to for interval aggregated results
+message IntervalAggregateQuery {
+  // The query time range e.g. -1h (will get the last hour of data)
+  string range = 1;
+
+  // The query aggregation interval e.g. 5m (will get counts of 5 minutes interval aggreated data)
+  string interval = 2;
+}
+
+service Metrics {
+  rpc ContributionsPerInterval(IntervalAggregateQuery) returns (ContributionMetric);
+}
