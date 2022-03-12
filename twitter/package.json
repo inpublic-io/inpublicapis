@@ -1,6 +1,6 @@
 {
   "name": "@inpublic-io/twitter-protocol",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "inpublic twitter gRPC protocol for typescript",
   "repository": "https://github.com/inpublic-io/inpublicapis",
   "author": "Vinicius Niche <viniciusnichecorrea@gmail.com>",
