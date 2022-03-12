@@ -4,13 +4,7 @@ package io.inpublic.twitter.v1;
 
 option go_package = "github.com/inpublic-io/protocol;protocol";
 
-// A represention of an contribution metric
-message ContributionMetric {
-  // The metric slice of timestamps and counts aggregated by the interval window
-  map<string, int32> values = 1;
-}
-
-// A representation of an query to for interval aggregated results
+// A representation of an query for interval aggregated results
 message IntervalAggregateQuery {
   // The query time range e.g. -1h (will get the last hour of data)
   string range = 1;
@@ -19,6 +13,39 @@ message IntervalAggregateQuery {
   string interval = 2;
 }
 
+// A represention of an contribution metric
+message ContributionMetrics {
+  // The metric slice of timestamps and counts aggregated by the interval window
+  map<string, int32> values = 1;
+}
+
+// A representation of an query for range aggregated results
+message RangeAggregateQuery {
+  // The query time range e.g. -1h (will get the last hour of data)
+  string range = 1;
+}
+
+// A represention of an reach metric
+message ReachMetrics {
+  // The metric slice of followers counts aggregated on a selected time range
+  repeated int32 values = 1;
+}
+
+// A represention of an stats metric
+message StatsMetrics {
+  // The metric on the average of result values
+  int32 average = 1;
+
+  // The metric on total of result values
+  int32 total = 2;
+
+  // The metric on the sum of all result values
+  int32 sum = 3;
+}
+
 service Metrics {
-  rpc ContributionsPerInterval(IntervalAggregateQuery) returns (ContributionMetric);
+  rpc ContributionsPerInterval(IntervalAggregateQuery) returns (ContributionMetrics);
+  rpc ContributionsStats(RangeAggregateQuery) returns (StatsMetrics);
+  rpc ContributorsReach(RangeAggregateQuery) returns (ReachMetrics);
+  rpc ContributorsStats(RangeAggregateQuery) returns (StatsMetrics);
 }
